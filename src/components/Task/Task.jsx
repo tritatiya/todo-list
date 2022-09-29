@@ -4,28 +4,25 @@
  import { AiOutlineEdit } from "react-icons/ai";
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { completeToDo, deleteToDo, editToDo } from '../../actions/todoAction';
+import { completeTodo, deleteTodo, editTodo } from '../../store/slices/todoSlice';
 
  const Task = ({id}) => {
     const [isEdit,setIsEdit] = useState(false)
-    const todoList = useSelector((state)=>state)
+    const todoList = useSelector((state)=>state.todo)
     const dispatch = useDispatch()
-
-
-
 
    return (
      <div className='task' >
         <input className='checkContainer' type="checkbox"
                 checked={todoList[id].isComplete}
                 onChange={()=>{
-                    dispatch(completeToDo(id))
+                    dispatch(completeTodo({id:id}))
                 }}
         />
         <input className='edit-task'  
                 value={todoList[id].title}
                 onChange={(e)=>{
-                    dispatch(editToDo(id, e.target.value))   
+                    dispatch(editTodo({id, newTitle: e.target.value}))   
                 }}  
                 disabled={isEdit 
                     ? '' 
@@ -45,7 +42,7 @@ import { completeToDo, deleteToDo, editToDo } from '../../actions/todoAction';
         </button>
         <button className="deleteButton" 
                     onClick={()=>{
-                        dispatch(deleteToDo(id))
+                        dispatch(deleteTodo({id:id}))
         
                     }}>
             <TbTrash size={20}/>

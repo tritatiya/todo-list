@@ -5,7 +5,7 @@ import './TodoList.css'
 
 const TodoList = () => {
     
-    const todoList = useSelector((state)=>state)
+    const todoList = useSelector((state)=>state.todo)
 
 
   return (

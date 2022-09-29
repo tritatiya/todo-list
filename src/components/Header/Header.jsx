@@ -6,25 +6,9 @@ import TodoList from '../TodoList/TodoList';
 import { useDispatch, useSelector } from 'react-redux';
 
 
-const getLocalItems = ()=> {
-  const list = localStorage.getItem('todo')
-  if(list){
-    return JSON.parse(localStorage.getItem('todo'))
-  } else {
-    return []
-  }
-}
-
 const Header = () => {
   
-  
-  
-
-  const dispatch = useDispatch();
-
- 
-
-  const todoList =useSelector((state)=>state)
+  const todoList =useSelector((state)=>state.todo)
   
 
   useEffect(()=>{

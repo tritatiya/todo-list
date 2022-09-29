@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToDo } from '../../actions/todoAction'
+import { addTodo } from '../../store/slices/todoSlice'
+
 import './AddBar.css'
 
 const AddBar = () => {
@@ -15,9 +16,11 @@ const AddBar = () => {
               value={createText}
               onChange={(e)=>setCreateText(e.target.value)}/>
               
-              <button onClick={()=>{
-                dispatch(addToDo({title: createText, isComplete: false}
-                ))}}>
+              <button onClick={(e)=>{
+                e.preventDefault();
+                dispatch(addTodo({title: createText, isComplete: false}))
+                setCreateText('')
+                }}>
                   Create
                   <AiOutlinePlusCircle size={20}/>
               </button>
