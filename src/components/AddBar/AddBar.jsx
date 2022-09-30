@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AiOutlinePlusCircle } from 'react-icons/ai'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import { addToDo } from '../../actions/todoAction'
 import './AddBar.css'
 
