@@ -1,5 +1,4 @@
 import './Header.css'
-import { useState } from 'react';
 import { useEffect } from 'react';
 import AddBar from '../AddBar/AddBar';
 import TodoList from '../TodoList/TodoList';
